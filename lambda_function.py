@@ -30,12 +30,13 @@ http = urllib3.PoolManager(cert_reqs='CERT_NONE') # Do it secure with http = url
 # Tip: Add stateful detections high-confidence impacts over standalone events.
 # netskp field is required to match sysdig events with the expected string to be found in netskope logs (* means wildcard)
 sysdig_findings = [
+    {"name":"Create Password for User", "penalty": 150, "netskp":"iam"},
     {"name":"Delete Bucket Public Access Block", "penalty":350, "netskp":"s3"},
     {"name":"Register Domain", "penalty":250, "netskp":"route53"},
     {"name":"Delete Detector", "penalty":250, "netskp":"guardduty"},
     {"name":"CloudTrail Trail Deleted", "penalty":250, "netskp":"cloudtrail"},
     {"name":"CloudTrail Logging Disabled", "penalty":250, "netskp":"cloudtrail"},
-    {"name":"AWS Suspicious IP Inbound Request", "penalty":1000, "netskp":"*"},
+    {"name":"AWS Suspicious IP Inbound Request", "penalty":1000, "netskp":"aws"},
     {"name":"Put Bucket ACL for AllUsers", "penalty":350, "netskp":"s3"},
     {"name":"Deactivate MFA for Root User", "penalty":600, "netskp":"iam"},
     {"name":"Delete WAF Rule Group", "penalty":250, "netskp":"firewall"},
