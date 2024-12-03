@@ -2,6 +2,14 @@
 
 This integration compare signals from Sysdig CDR and Netskope SASE to detect risky operations in the cloud, find out if they come from trusted or untrusted devices, block them with Netskope if they are originated from an employee's computer (risky employee or potential computer hijacking), or alert if they are coming from an untrusted device (potential intrusion / stolen credentials).
 
+## Important considerations and prerequisites
+
+- [Sysdig](https://sysdig.com) CDR connected to a cloud account (it has been tested with AWS so far) and an API Token (preferably associated to a service account)
+- [Netskope](https://www.netskope.com/products/secure-access-service-edge) SASE with [UCI](https://docs.netskope.com/en/behavior-analytics-user-confidence-index/) and an API V2 token. Create and configure a [Real-Time Protection policy](https://docs.netskope.com/en/inline-policies/) for UCI-driven responses like user blocking.
+- AWS IAM identities must be email centric or the script will be unable to match IAM with Netskope user identities.
+- The script use an array of important events to decide which particular Sysdig findings will trigger the automation and what would be the UCI penalty.
+- A needle string is used to try to identify if the events were originated from a trusted device, this feature provide an interesting new source of evidences for real time automations, but it is not meant to be perfect.
+
 ## Instructions
 
 ### Configure the script
