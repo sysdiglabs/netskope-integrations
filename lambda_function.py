@@ -77,7 +77,8 @@ def lambda_handler(event, context):
         else:
             # Untrusted device
             # Alert: Potentially dangerous outsider. It can't be blocked by Netskope as he accessed from an untrusted device. 
-            print("Sending email alert: outsider or untrusted device")
+            msg = "Sending email alert: outsider or untrusted device"
+            print(msg)
             body = f'Alert, \n\nAn outsider is performing risky operations in the cloud fro an untrusted device.\nUser: {userName}\nCloud: {CLOUD_VENDOR_SYSDIG}\nOperation: {eventName}\n\nRegards,\nSysdig integration | Lambda Function'
             sns_client = boto3.client('sns')
             res = sns_client.publish(
@@ -275,7 +276,7 @@ def extractEventFromSysdigWebhook(event):
 def findCompromisedSysdigCIEM(CIEMResponse):
     try:
         # Use get() method for safer dictionary access with default values
-        user_data = ciem_response.get('data', [{}])[0]
+        user_data = CIEMResponse.get('data', [{}])[0]
         
         # Check compromised state
         compromised_state = user_data.get('compromisedState', {}).get('id', 'not-compromised')

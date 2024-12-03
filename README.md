@@ -69,7 +69,7 @@ graph TD
     C -->|An Untrusted Device originated the events| E[Send Email Alert via SNS]
 
     F -->|Event risk + CIEM compromised state| G[Calculate UCI Impact]
-    G -->H[Submit UCI Impact to Netskope]
+    G -->H[Submit UCI Impact to Netskope and/or use SCIM blocklist group]
 
     E--> Q[End]
     H --> Q
