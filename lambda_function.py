@@ -77,7 +77,7 @@ def lambda_handler(event, context):
         else:
             # Untrusted device
             # Alert: Potentially dangerous outsider. It can't be blocked by Netskope as he accessed from an untrusted device. 
-            msg = "Sending email alert: outsider or untrusted device"
+            msg = "Sending email alert: outsider or untrusted device generating risky activity in the cloud"
             print(msg)
             body = f'Alert, \n\nAn outsider is performing risky operations in the cloud fro an untrusted device.\nUser: {userName}\nCloud: {CLOUD_VENDOR_SYSDIG}\nOperation: {eventName}\n\nRegards,\nSysdig integration | Lambda Function'
             sns_client = boto3.client('sns')
