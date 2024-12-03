@@ -1,5 +1,6 @@
-# Sysdig Lambda Webhook handler
+# Sysdig Webhook Handler for Netskope
 
+This integration compare signals from Sysdig CDR and Netskope SASE to detect risky operations in the cloud, find out if they come from trusted or untrusted devices, block them with Netskope if they are originated from an employee's computer (risky employee or potential computer hijacking), or alert if they are coming from an untrusted device (potential intrusion / stolen credentials).
 
 ## Instructions
 
